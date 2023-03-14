@@ -8,6 +8,7 @@ import pen1 from '../../p1.png'
 import coin from '../../money.png'
 import bubble from '../../bubble.png'
 import ice from '../../region@2x.png'
+import Countdown from '../../Component/Countdown/Countdown';
 import Counter from '../../Component/Time/Counter';
 
 
@@ -32,6 +33,7 @@ function PlayPage() {
       {/* <div className="Counter">
         <Counter />
       </div> */}
+      <Countdown />
       <img id="money-img" src={coin} alt="money"/>
       <img id="p1-img" src={pen1} alt="player 1"/>    
       <img id="speech" src={bubble} alt="bubble"/>
