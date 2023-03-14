@@ -47,7 +47,7 @@ body {
   
   .centerIt {
     position: absolute;
-    top: 14%;
+    top: 13.6%;
     right: -29.5%;
     transform: translateX(-50%) translateY(-50%);
     z-index: 99;

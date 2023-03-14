@@ -58,6 +58,7 @@ function Terminal() {
     }
   };
 
+  
   useEffect(() => {
     inputRef.current.focus();
   }, []);

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import '../Countdown/countdown.css'
 
-function CountDown() {
+function Countdown() {
   const [timeLeft, setTimeLeft] = useState({
-    minutes: "00",
+    minutes: "45",
     seconds: "00",
   });
 
@@ -18,23 +18,26 @@ function CountDown() {
     };
   }
 
-  function initializeClock(endtime) {
-    const timeinterval = setInterval(() => {
-      const t = getTimeRemaining(endtime);
-      setTimeLeft({
-        minutes: t.minutes.toString().padStart(2, "0"),
-        seconds: t.seconds.toString().padStart(2, "0"),
-      });
-
-      if (t.total <= 0) {
-        clearInterval(timeinterval);
-      }
-    }, 1000);
-  }
-
   useEffect(() => {
-    initializeClock(new Date(Date.now() + 45 * 60 * 1000));
-  }, []);
+    const intervalId = setInterval(() => {
+      setTimeLeft((prev) => {
+        const totalSeconds = parseInt(prev.minutes) * 60 + parseInt(prev.seconds);
+        const newTotalSeconds = totalSeconds - 1;
+        const newMinutes = Math.floor(newTotalSeconds / 60).toString().padStart(2, "0");
+        const newSeconds = (newTotalSeconds % 60).toString().padStart(2, "0");
+        if (newTotalSeconds <= 0) {
+          clearInterval(intervalId);
+        }
+        return {
+          minutes: newMinutes,
+          seconds: newSeconds,
+        };
+      });
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+}, []);
+
 
   return (
     <div className="continer centerIt">
@@ -52,4 +55,4 @@ function CountDown() {
   );
 }
 
-export default CountDown;
+export default Countdown;
