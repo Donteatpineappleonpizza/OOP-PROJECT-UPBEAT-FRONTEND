@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Terminal from '../../Component/Terminal/Terminal';
 import SoundToggle from '../../Component/Mute/SoundToggle';
-// import Hexgrid from "../components/Map/Hex";
 import './playpage.css';
 import pen1 from '../../p1.png'
 import coin from '../../money.png'
@@ -10,6 +9,7 @@ import bubble from '../../bubble.png'
 import ice from '../../region@2x.png'
 import Countdown from '../../Component/Countdown/Countdown';
 import Counter from '../../Component/Time/Counter';
+import Region from '../../Component/Map/Regaion'
 
 
 
@@ -28,8 +28,7 @@ function PlayPage() {
       <div className="plan">
         <h1>Construction plan's</h1>
       </div>
-
-
+      <Region />
       {/* <div className="Counter">
         <Counter />
       </div> */}
@@ -44,9 +43,6 @@ function PlayPage() {
       <div className="box"></div>
       {/* <div className="square5"></div> */}
       <div className="sq"></div>
-       {/* <div className='hex'>
-        <Hexgrid />
-       </div> */}
       <div className="right-button-container">
         <div className="button-container right-button">
           <button className="custom-btn btn-3">
@@ -62,7 +58,4 @@ function PlayPage() {
     </div>
   );
 }
-// ReactDOM.render(<Terminal />, document.getElementById('root'));
-// ReactDOM.render(<PlayPage />, document.getElementById('root'));
-
 export default PlayPage;
