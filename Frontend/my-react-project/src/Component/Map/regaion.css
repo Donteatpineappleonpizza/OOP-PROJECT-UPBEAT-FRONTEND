@@ -35,3 +35,13 @@
     margin-top: 0%;
     border: 1px solid black;
   }
+
+  .text{
+    position: absolute;
+    left: 4.5%;
+    bottom: 36.8%;
+    font: 0.875em/1.7 "Varela Round", sans-serif;
+    font-size: 17px;
+    z-index: 120;
+  }
+  
