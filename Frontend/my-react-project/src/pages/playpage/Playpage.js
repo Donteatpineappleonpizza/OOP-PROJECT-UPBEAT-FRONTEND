@@ -11,8 +11,6 @@ import Countdown from '../../Component/Countdown/Countdown';
 import Counter from '../../Component/Time/Counter';
 import Region from '../../Component/Map/Regaion'
 
-
-
 function PlayPage() {
   return (
     <div>

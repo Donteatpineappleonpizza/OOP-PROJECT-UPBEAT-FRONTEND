@@ -116,15 +116,13 @@ function Grid({ matrix, W, H, onGridClick }) {
       className="grid-container"
     >
         <div
-          style={{
-            transform: transformStyle,
-          }}
+          style={{scale: zoomLevel}}
         >
-    <motion.div className="container4" >
+    <motion.div className="container4"  >
     <Grid matrix={matrix} W={W} H={H} onGridClick={handleGridClick} />
     </motion.div>
     </div>
-    </div>
+    </div >
     {clickedCell && (
         <p className="text">
           R {clickedCell.row + 1} , C {clickedCell.column + 1} 

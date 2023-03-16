@@ -1,22 +1,47 @@
+import React, { useState, useEffect } from 'react';
+import sound from '../Music/fire.mp3'
+
 function MusicPlayer() {
+  const [audio, setAudio] = useState(null);
+
   useEffect(() => {
     const isMusicPlaying = localStorage.getItem('isMusicPlaying');
 
     if (!isMusicPlaying) {
-      const audio = new Audio('path/to/music.mp3');
-      audio.loop = true;
-      audio.play();
+      const audioInstance = new Audio({sound});
+      audioInstance.loop = true;
+      audioInstance.muted = true;
+      audioInstance.play();
+      setAudio(audioInstance);
 
-      // Store the flag indicating that the music is playing in localStorage
-      localStorage.setItem('isMusicPlaying', true);
+      // Unmute audio after user interaction
+      const handleUserInteraction = () => {
+        audioInstance.muted = false;
+        localStorage.setItem('isMusicPlaying', true);
 
-      // Clean up function to stop the music and remove the flag from localStorage
+        // Remove the event listeners after the first interaction
+        window.removeEventListener('click', handleUserInteraction);
+        window.removeEventListener('keydown', handleUserInteraction);
+      };
+
+      window.addEventListener('click', handleUserInteraction);
+      window.addEventListener('keydown', handleUserInteraction);
+
       return () => {
-        audio.pause();
-        localStorage.removeItem('isMusicPlaying');
+        window.removeEventListener('click', handleUserInteraction);
+        window.removeEventListener('keydown', handleUserInteraction);
       };
     }
-  }, []);
+
+    return () => {
+      if (audio) {
+        audio.pause();
+      }
+      localStorage.removeItem('isMusicPlaying');
+    };
+  }, [audio]);
 
   return null;
 }
+
+export default MusicPlayer;
