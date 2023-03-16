@@ -20,6 +20,7 @@ function Terminal() {
 
   const inputRef = useRef(null);
 
+
   const handleInput = (e) => {
     if (e.which === 13) {
       const input = e.target.value.split(' ');
@@ -108,7 +109,7 @@ function Terminal() {
       </div>
       <div className="square5"></div>
     </div>
-  );
+    );
 }
 
 export default Terminal;

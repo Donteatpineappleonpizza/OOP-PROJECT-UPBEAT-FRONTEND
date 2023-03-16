@@ -74,9 +74,9 @@ function Grid({ matrix, W, H, onGridClick }) {
   }
   
   const [zoomLevel, setZoomLevel] = useState(1);
-
-  const wrapperWidth = `${W * columns * zoomLevel}px`;
-  const wrapperHeight = `${H * rows * zoomLevel}px`;
+  const [isDragging, setIsDragging] = useState(false);
+  const [lastMousePosition, setLastMousePosition] = useState({ x: 0, y: 0 });
+  const [containerPosition, setContainerPosition] = useState({ x: 0, y: 0 });
 
   const transformStyle = `scale(${zoomLevel})`;
 
@@ -101,27 +101,55 @@ function Grid({ matrix, W, H, onGridClick }) {
     };
   }, [zoomLevel]);
 
+
   const [clickedCell, setClickedCell] = useState(null);
   const handleGridClick = (row, column) => {
     setClickedCell({ row, column });
   };
+
   return (
     <>
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-      className="grid-container"
-    >
-        <div
-          style={{scale: zoomLevel}}
+<div className="icon">
+  <button className="icon__home" onClick={() => setZoomLevel(zoomLevel + 0.1)}>Zoom In</button>
+  <button className="icon__account" onClick={() => setZoomLevel(zoomLevel - 0.1)}>Zoom Out</button>
+  <button className="icon__settings" onClick={() => {
+    setZoomLevel(1);
+    setContainerPosition({ x: 0, y: 0 });
+  }}>Reset</button>
+</div>
+
+      <div className="buttons">
+    <button onClick={() => setZoomLevel(zoomLevel + 0.1)}>Zoom In</button>
+    <button onClick={() => setZoomLevel(zoomLevel - 0.1)}>Zoom Out</button>
+    <button onClick={() => {
+      setZoomLevel(1);
+      setContainerPosition({ x: 0, y: 0 });
+    }}>Reset</button>
+  </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "relative",
+          overflow: "hidden",
+        }}
+        className="container4"
+      >
+      
+      <div
+          style={{
+            position: "absolute",
+            top: "3%",
+            left: "3.5%",
+            transform: transformStyle,
+            transition: "transform 0.1s linear",
+          }}
+          className="grid-container"
         >
-    <motion.div className="container4"  >
-    <Grid matrix={matrix} W={W} H={H} onGridClick={handleGridClick} />
-    </motion.div>
-    </div>
+          
+      <Grid matrix={matrix} W={W} H={H} onGridClick={handleGridClick} />
+      </div>
     </div >
     {clickedCell && (
         <p className="text">

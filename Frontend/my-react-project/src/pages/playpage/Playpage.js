@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import Terminal from '../../Component/Terminal/Terminal';
 import SoundToggle from '../../Component/Mute/SoundToggle';
@@ -10,10 +10,19 @@ import ice from '../../region@2x.png'
 import Countdown from '../../Component/Countdown/Countdown';
 import Counter from '../../Component/Time/Counter';
 import Region from '../../Component/Map/Regaion'
+import myMp3File from '../playpage/fire.mp3';
 
 function PlayPage() {
+  useEffect(() => {
+    const audioEl = document.getElementsByClassName("audio-element")[0];
+    audioEl.play();
+  }, []);
+
   return (
     <div>
+      <div>
+        <audio className="audio-element" autoPlay loop src={myMp3File} />
+      </div>
       <div className="Terminal">
         <Terminal />
       </div>
@@ -56,4 +65,5 @@ function PlayPage() {
     </div>
   );
 }
+
 export default PlayPage;
