@@ -1,0 +1,55 @@
+body {
+    font-family: "Roboto", sans-serif;
+    min-height: 100%;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+  }
+  
+  .continer {
+    color: #000000;
+    margin: auto;
+    width: 450px;
+  }
+  
+  .continer .counter {
+    font-weight: 700;
+    border-radius: 5px;
+    min-height: 55px;
+  }
+  
+  .continer .counter .minutes,
+  .continer .counter .seconds {
+    width: 15%;
+    float: left;
+    text-align: center;
+  }
+  .continer .counter .minutes .value,
+  .continer .counter .seconds .value {
+    position: relative;
+    font-size: 26pt;
+  }
+  .continer .counter .minutes span,
+  .continer .counter .seconds span {
+    position: relative;
+    font-size: 5px;
+    opacity: 1;
+  }
+  .continer .counter .seconds::before {
+    content: ":";
+    float: left;
+    font-size: 15pt;
+    position: relative;
+    margin-top: 8px;
+    opacity: 1;
+  }
+  
+  .centerIt {
+    position: absolute;
+    top: 13%;
+    right: -29.5%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 99;
+  }
+  
