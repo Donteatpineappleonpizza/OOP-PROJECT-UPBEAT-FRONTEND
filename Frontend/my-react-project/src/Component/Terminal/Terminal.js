@@ -1,5 +1,31 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../Terminal/terminal.css'
+import $ from 'jquery';
+
+$(".panel").on('keypress', ".in", function(e) {
+  if (e.which == 13) {
+      $(this).prop('readonly', true);
+      var input = $(this).val().split(" ");
+      if (input[1]) {
+          var output = execute(input[0], input[1]);
+      } else {
+          var output = execute(input[0], "");
+      }
+      $(".output").last().html(output)
+      $(".panel").append($("<div class='action'>").html("<div class='action'><div class='command'><span class='symbol'></span><input class='in' type='text'></div><div class='output'></div></div>"));
+      $(".in").last().focus();
+  }
+});
+
+
+const execute = (command, parameters) => {
+  console.log(command, parameters);
+  if (window[command]) {
+    return window[command](parameters);
+  } else {
+    return '';
+  }
+};
 
 const files = {
   "root": {
@@ -21,26 +47,20 @@ function Terminal() {
   const inputRef = useRef(null);
 
 
-  const handleInput = (e) => {
-    if (e.which === 13) {
-      const input = e.target.value.split(' ');
-      const command = input[0];
-      const parameters = input[1] || '';
-      const result = execute(command, parameters);
-      setOutput(result);
-      e.target.value = '';
-      e.target.blur();
-    }
-  };
-
-  const execute = (command, parameters) => {
-    console.log(command, parameters);
-    if (window[command]) {
-      return window[command](parameters);
-    } else {
-      return '';
-    }
-  };
+  // const handleInput = (e) => {
+  //   if (e.which === 13) {
+  //     $(e.target).prop('readonly', true);
+  //     const input = e.target.value.split(' ');
+  //     const command = input[0];
+  //     const parameters = input[1] || '';
+  //     const result = execute(command, parameters);
+  //     setOutput(result);
+  //     e.target.value = '';
+  //     e.target.blur();
+  //     $(".panel").append($("<div class='action'>").html("<div class='command'><span class='symbol'>$</span><input class='in' type='text'></div><div class='output'></div></div>"));
+  //     $(".in").last().focus();
+  //   }
+  // };
 
   const cd = (folder) => {
     if (folder === '') {
@@ -84,7 +104,7 @@ function Terminal() {
               type="text"
               placeholder="type . . ."
               autoFocus
-              onKeyDown={handleInput}
+              // onKeyDown={handleInput}
               ref={inputRef}
               disabled={isInputDisabled}
             />
