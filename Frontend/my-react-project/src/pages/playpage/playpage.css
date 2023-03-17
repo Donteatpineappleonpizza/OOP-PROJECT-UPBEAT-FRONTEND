@@ -7,7 +7,7 @@ html {
 
 .turn {
   position: fixed;
-  top: 0%;
+  top: -1%;
   left: 1%;
   z-index: 1;
   font-size: 1.2em;
@@ -18,8 +18,8 @@ html {
 
 .plan {
   position: fixed;
-  top: 3.7%;
-  right: 3%;
+  top: 2.6%;
+  right: 2.3%;
   z-index: 1;
   font-size: 1.2em;
   font-weight: 400;
@@ -29,7 +29,7 @@ html {
 
 .box {
   position: fixed;
-  top: 11%;
+  top: 11.3%;
   right: 10.5%;
   width: 160px;
   height: 37px;

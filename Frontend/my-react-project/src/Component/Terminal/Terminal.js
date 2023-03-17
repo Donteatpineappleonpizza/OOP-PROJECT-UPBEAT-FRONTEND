@@ -1,135 +1,114 @@
-import React, { useState, useRef, useEffect } from 'react';
-import '../Terminal/terminal.css'
-import $ from 'jquery';
-
-$(".panel").on('keypress', ".in", function(e) {
-  if (e.which == 13) {
-      $(this).prop('readonly', true);
-      var input = $(this).val().split(" ");
-      if (input[1]) {
-          var output = execute(input[0], input[1]);
-      } else {
-          var output = execute(input[0], "");
-      }
-      $(".output").last().html(output)
-      $(".panel").append($("<div class='action'>").html("<div class='action'><div class='command'><span class='symbol'></span><input class='in' type='text'></div><div class='output'></div></div>"));
-      $(".in").last().focus();
-  }
-});
-
-
-const execute = (command, parameters) => {
-  console.log(command, parameters);
-  if (window[command]) {
-    return window[command](parameters);
-  } else {
-    return '';
-  }
-};
-
-const files = {
-  "root": {
-    "aboutme.txt": "-Get new shell, -Buy Milk",
-    "passwords.txt": "gmail: p@ssword, reddit: hunter2",
-    "projects": {
-      "bio.txt": "cells organisms",
-      "chem.txt": "ions protons"
-    }
-  }
-};
+import React, { useState, useRef, useEffect } from "react";
+import "../Terminal/terminal.css";
 
 function Terminal() {
-  const [currentFolder, setCurrentFolder] = useState(files["root"]);
-  const [path, setPath] = useState([]);
-  const [output, setOutput] = useState('');
+  const [command, setCommand] = useState("");
+  const [path, setPath] = useState("c:\\scrivener\\bartleby\\> ");
+  const [history, setHistory] = useState(["Welcome to upbeat"]);
   const [isInputDisabled, setIsInputDisabled] = useState(false);
+  const [isRevisionButton, setIsRevisionButton] = useState(false);
 
-  const inputRef = useRef(null);
+  const getInput = () => {
+    return command;
+  };
 
+  const attachCommand = () => {
+    const newHistory = [...history];
+    newHistory.push(`${path}${getInput()}`);
+    setHistory(newHistory);
+  };
 
-  // const handleInput = (e) => {
-  //   if (e.which === 13) {
-  //     $(e.target).prop('readonly', true);
-  //     const input = e.target.value.split(' ');
-  //     const command = input[0];
-  //     const parameters = input[1] || '';
-  //     const result = execute(command, parameters);
-  //     setOutput(result);
-  //     e.target.value = '';
-  //     e.target.blur();
-  //     $(".panel").append($("<div class='action'>").html("<div class='command'><span class='symbol'>$</span><input class='in' type='text'></div><div class='output'></div></div>"));
-  //     $(".in").last().focus();
-  //   }
-  // };
+  const returnResponse = () => {
+    const newHistory = [...history];
+    newHistory.push(command);
+    setHistory(newHistory);
+  };
 
-  const cd = (folder) => {
-    if (folder === '') {
-      return '';
-    }
-    if (folder === '..') {
-      if (path.length > 0) {
-        setCurrentFolder((prev) => prev.upperFolder);
-        setPath((prev) => prev.slice(0, -1));
-      }
-    } else if (typeof currentFolder[folder] === 'object') {
-      setCurrentFolder(currentFolder[folder]);
-      setPath((prev) => [...prev, folder]);
-    } else {
-      return `bash: cd: ${folder}: No such file or directory`;
+  const repeatInput = () => {
+    setCommand(history[history.length - 2]);
+  };
+
+  const scrollToBottom = () => {
+    const result = document.querySelector(".result");
+    result.scrollTop = result.scrollHeight;
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13) {
+      doTheThing();
+      console.log("what")
+    } else if (e.keyCode === 38) {
+      repeatInput();
     }
   };
 
-  
-  useEffect(() => {
-    inputRef.current.focus();
-  }, []);
+  const doTheThing = () => {
+    const input = getInput().trim();
+    if (input !== "") {
+      // attachCommand();
+      returnResponse();
+      scrollToBottom();
+    }
 
-  const handleDoneButtonClick = () => {
-    setIsInputDisabled(true);
+    setCommand("");
   };
 
   const handleEnableButtonClick = () => {
-    setIsInputDisabled(false);
-    inputRef.current.focus();
+    setIsInputDisabled(true);
+    setIsRevisionButton(true);
   };
 
+  const handleDoneButtonClick = () => {
+    setIsInputDisabled(false);
+    setIsRevisionButton(false);
+  };
+  
+
   return (
-    <div className="container">
-      <div className="panel">
-        <div className="action">
-          <div className="command">
-            <span100 className="symbol"></span100>
-            <input
-              className="in"
-              type="text"
-              placeholder="type . . ."
-              autoFocus
-              // onKeyDown={handleInput}
-              ref={inputRef}
-              disabled={isInputDisabled}
-            />
-          </div>
-          <div className="output">{output}</div>
+    <div className="square5">
+      <div className="window">
+        <ul className="result">
+          {history.map((item, index) => (
+            <li
+              key={index}
+              className={index === 0 ? "ready" : ""}
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        <div className="command-area">
+          <label2 htmlFor="command-input"></label2>
+          <input
+            type="text"
+            id="command-input"
+            className="command"
+            placeholder="type command here…"
+            value={command}
+            onChange={(e) => setCommand(e.target.value)}
+            onKeyDown={handleKeyDown}
+            disabled={isInputDisabled} 
+          />
         </div>
       </div>
       <div className="right-button-container1">
-        {isInputDisabled ? (
+        {isRevisionButton ? (
           <div className="button-container1 right-button3">
-            <button className="custom-btn4 btn-16" onClick={handleEnableButtonClick}>
+            <button className="custom-btn4 btn-16" onClick={handleDoneButtonClick}>
               <span12>Revision</span12>
             </button>
           </div>
         ) : (
           <div className="button-container1 right-button2">
-            <button className="custom-btn3 btn-15" onClick={handleDoneButtonClick}>
+            <button className="custom-btn3 btn-15" onClick={handleEnableButtonClick}>
               <span12>Done</span12>
             </button>
           </div>
         )}
       </div>
-      <div className="square5"></div>
     </div>
-    );
+  );
 }
 
 export default Terminal;

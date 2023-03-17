@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Icebox from '../../region@2x.png'
 import './regaion.css'
-import { motion } from "framer-motion";
 
 function Grid({ matrix, W, H, onGridClick }) {
     const imageName = { Icebox };
@@ -109,45 +108,18 @@ function Grid({ matrix, W, H, onGridClick }) {
 
   return (
     <>
-<div className="icon">
-  <button className="icon__home" onClick={() => setZoomLevel(zoomLevel + 0.1)}>Zoom In</button>
-  <button className="icon__account" onClick={() => setZoomLevel(zoomLevel - 0.1)}>Zoom Out</button>
-  <button className="icon__settings" onClick={() => {
-    setZoomLevel(1);
-    setContainerPosition({ x: 0, y: 0 });
-  }}>Reset</button>
-</div>
+    <div  className="buttonszoom">
 
-      <div className="buttons">
-    <button onClick={() => setZoomLevel(zoomLevel + 0.1)}>Zoom In</button>
-    <button onClick={() => setZoomLevel(zoomLevel - 0.1)}>Zoom Out</button>
-    <button onClick={() => {
-      setZoomLevel(1);
-      setContainerPosition({ x: 0, y: 0 });
-    }}>Reset</button>
-  </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          position: "relative",
-          overflow: "hidden",
-        }}
-        className="container4"
-      >
-      
-      <div
-          style={{
-            position: "absolute",
-            top: "3%",
-            left: "3.5%",
-            transform: transformStyle,
-            transition: "transform 0.1s linear",
-          }}
-          className="grid-container"
-        >
-          
+      <button onClick={() => setZoomLevel(zoomLevel + 0.1)}>Zoom In</button>
+      <button onClick={() => setZoomLevel(zoomLevel - 0.1)}>Zoom Out</button>
+      <button onClick={() => {
+        setZoomLevel(1);
+        setContainerPosition({ x: 0, y: 0 });
+      }}>Reset</button>
+    </div>
+
+    <div style={{overflow: "hidden"}} className="container4">
+      <div style={{transform: transformStyle}} className="grid-container">
       <Grid matrix={matrix} W={W} H={H} onGridClick={handleGridClick} />
       </div>
     </div >

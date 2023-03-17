@@ -15,13 +15,16 @@ import myMp3File from '../playpage/fire.mp3';
 function PlayPage() {
   useEffect(() => {
     const audioEl = document.getElementsByClassName("audio-element")[0];
-    audioEl.play();
+    audioEl.addEventListener('canplaythrough', () => {
+      audioEl.play();
+    });
   }, []);
+  
 
   return (
     <div>
       <div>
-        <audio className="audio-element" autoPlay loop src={myMp3File} />
+      <audio className="audio-element" autoPlay loop src={myMp3File} />
       </div>
       <div className="Terminal">
         <Terminal />
