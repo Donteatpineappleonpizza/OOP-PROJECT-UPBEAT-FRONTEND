@@ -22,18 +22,20 @@ body {
 }
 
 .square {
+  top: 10%;
+  left: 10%;
   width: 140vmin;
   height: 80vmin;
   background-color: #d2f0fd;
   opacity: 0.8;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 1);
-  position: relative;
+  position: absolute;
 }
 
 #logo {
   position: absolute;
-  top: -4%;
+  top: -5%;
   left: 50%;
   transform: translateX(-50%);
   width: 540px;
@@ -42,11 +44,11 @@ body {
 
 #How {
   position: absolute;
-  top: 5%;
-  left: 50%;
+  top: 10%;
+  left: 51%;
   transform: translateX(-50%);
-  width: 1600px;
-  height: 900px;
+  width: 1500px;
+  height: 800px;
 }
 
 #box1 {
@@ -66,15 +68,19 @@ body {
   color: #fff;
   font-size: 32px;
   text-align: center;
-  margin-top: 4px;
+  margin-top: -5px;
   font-family: Arial Rounded MT Bold;
 }
 
-.custom-btn {
-  top: 81%;
-  left: 45%;
-  width: 130px;
-  height: 40px;
+button11 {
+  margin: 20px;
+  position: absolute;
+  bottom: 10%;
+  right: 52%;
+}
+.custom-btn-11 {
+  width: 160px;
+  height: 60px;
   color: #fff;
   border-radius: 5px;
   padding: 10px 25px;
@@ -85,104 +91,67 @@ body {
   transition: all 0.3s ease;
   position: absolute;
   display: inline-block;
-  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
-    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
   outline: none;
   text-align: center;
   text-decoration: none;
+  background-color: rgb(251,33,117);
 }
 
-.custom-btn span2 {
+.custom-btn-11 > span2 {
   text-decoration: none;
   position: relative;
-  z-index: 1;
+  z-index: 0;
   font-size: 30px;
-  font-family: "Varela Round, sans-serif";
-}
+  font-family: Arial Rounded MT Bold;
+  font-weight: 500;
+  background: rgb(251,33,117);
+  background: linear-gradient(0deg, rgba(251,33,117,1) 0%, rgba(234,76,137,1) 100%);
+  overflow: hidden;
+}  
 
 .btn-11 {
   border: none;
-  background: rgb(251, 33, 117);
-  background: linear-gradient(
-    0deg,
-    rgba(251, 33, 117, 1) 0%,
-    rgba(234, 76, 137, 1) 100%
-  );
+  background: rgb(251,33,117);
+  background: linear-gradient(0deg, rgba(251,33,117,1) 0%, rgba(234,76,137,1) 100%);
   color: #fff;
   overflow: hidden;
 }
+
+
 .btn-11:hover {
-  text-decoration: none;
-  color: #fff;
+    text-decoration: none;
+    color: #fff;
 }
 .btn-11:before {
   position: absolute;
-  content: "";
+  content: '';
   display: inline-block;
   top: -180px;
   left: 0;
   width: 130px;
   height: 100%;
-  background-color: #fff;
-  animation: shiny-btn1 3s ease-in-out infinite;
+  -webkit-animation: shiny-btn1 3s ease-in-out infinite;
+  animation-name: shiny-btn1;
 }
-.btn-11:hover {
+
+.btn-11:hover{
   opacity: 0.7;
 }
-.btn-11:active {
-  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.3),
-    -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
-    inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2),
-    inset 4px 4px 6px 0 rgba(0, 0, 0, 0.2);
+
+.btn-11:active{
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
 }
 
 @keyframes shiny-btn1 {
-  0% {
-    transform: scale(0) rotate(45deg);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(0) rotate(45deg);
-    opacity: 0.5;
-  }
-  51% {
-    transform: scale(4) rotate(45deg);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(50) rotate(45deg);
-    opacity: 0;
-  }
+  0% { transform: scale(0) rotate(45deg); opacity: 0; }
+  50% { transform: scale(0) rotate(45deg); opacity: 0.5; }
+  51% { transform: scale(4) rotate(45deg); opacity: 1; }
+  100% { transform: scale(50) rotate(45deg); opacity: 0; }
 }
 
-@-webkit-keyframes shiny-btn1 {
-  0% {
-    -webkit-transform: scale(0) rotate(45deg);
-    opacity: 0;
-  }
-  50% {
-    -webkit-transform: scale(0) rotate(45deg);
-    opacity: 0.5;
-  }
-  51% {
-    -webkit-transform: scale(4) rotate(45deg);
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: scale(50) rotate(45deg);
-    opacity: 0;
-  }
-}
-
-.btn-11:before {
-  position: absolute;
-  content: "";
-  display: inline-block;
-  top: -180px;
-  left: 0;
-  width: 130px;
-  height: 100%;
-  background-color: #fff;
-  animation: shiny-btn1 3s ease-in-out infinite;
-  -webkit-animation: shiny-btn1;
-}

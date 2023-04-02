@@ -29,6 +29,13 @@
   border: 3px solid rgb(86, 138, 187);
 }
 
+.grid-container-wrapper {
+  position: relative;
+  top: 3%;
+  left: 4%;
+  transform: translate(-50%, -50%);
+}
+
 .text {
   position: absolute;
   left: 4.5%;

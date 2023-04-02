@@ -11,7 +11,7 @@ import PlayPage from "./pages/playpage/Playpage";
 function App() {
   return (
     <div>
-      <PlayPage />
+      <PlayPage/>
     </div>
   );
 }

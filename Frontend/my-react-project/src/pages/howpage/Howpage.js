@@ -13,11 +13,11 @@ function Howpage() {
       <img id="logo" src={logo} />
       <img id="How" src={How} />
       <div id="box1"></div>
-      <button>
-        <a href="#" className="custom-btn btn-11">
+      <button11>
+        <a href="#" className="custom-btn-11">
           <span2>NEXT</span2>
         </a>
-      </button>
+      </button11>
     </div>
   );
 }
