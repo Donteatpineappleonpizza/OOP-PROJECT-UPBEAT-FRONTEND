@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Component } from "react";
 import ReactDOM from "react-dom";
 import Terminal from "../../Component/Terminal/Terminal";
@@ -20,6 +20,8 @@ function PlayPage() {
       audioEl.play();
     });
   }, []);
+
+  const budget = 10000;
 
   return (
     <div>
@@ -52,7 +54,7 @@ function PlayPage() {
       <div className="box3"></div>
       <div className="box">
         <div className="budget">
-          <p>budget</p>
+          <p>{budget}</p>
         </div>
       </div>
       {/* <div className="square5"></div> */}

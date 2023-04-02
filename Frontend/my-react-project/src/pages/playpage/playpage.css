@@ -41,14 +41,14 @@ html {
 
 .budget {
   position: fixed;
-  top: 9%;
+  top: 8%;
   right: 8.5%;
   width: 160px;
   height: 37px;
   font: 0.875em/1.7 "Varela Round", sans-serif;
   color: #623e1c;
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 26px;
+  font-weight: bolder;
   z-index: 120;
 }
 
