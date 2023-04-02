@@ -13,9 +13,8 @@ code {
 }
 
 .root {
-  transition: all 0.3s ease-out;
-  padding: 0px 0;
   top: 0;
+  left: 0;
   z-index: -2;
   height: 100%;
   width: 100%;
@@ -64,6 +63,7 @@ code {
   box-shadow: 0px 3px 5px #00000025;
   text-align: center;
   color: rgb(255, 255, 255);
+  font-size: 30px;
   font-weight: 300;
   font-family: Arial Rounded MT;
   letter-spacing: 1px;
@@ -134,8 +134,7 @@ code {
 
 .characterBox img.tier2:hover,
 .characterBox img.selected {
-  animation: saturate 2s infinite;
-  transform: scale(1.35);
+  transform: scale(1.45);
 }
 
 .morph {

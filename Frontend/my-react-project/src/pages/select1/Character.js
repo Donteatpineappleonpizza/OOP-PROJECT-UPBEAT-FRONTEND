@@ -1,10 +1,9 @@
 import React from "react";
 import cx from "classnames";
-import scrollToComponent from "react-scroll-to-component";
+//import scrollToComponent from "react-scroll-to-component";
 import P1Img from "./p1wbg.png";
 import P2Img from "./p2wbg.png";
 import styles from "./styles.module.css";
-import Select1 from "./Select1";
 
 export const Header = ({ children, ...rest }) => (
   // eslint-disable-next-line
@@ -92,11 +91,11 @@ const useLevelUpScreen = ({ morphRef, morphedRef }) => {
 
   const onSelect = (type) => (e) => {
     setSelected(type);
-    scrollToComponent(morphRef.current, {
+    /*scrollToComponent(morphRef.current, {
       offset: 300,
       align: "bottom",
       duration: 1000,
-    });
+    });*/
   };
 
   const onMorph = () => {
@@ -107,7 +106,7 @@ const useLevelUpScreen = ({ morphRef, morphedRef }) => {
     }, 1500);
   };
 
-  React.useEffect(() => {
+  /*React.useEffect(() => {
     if (morphed && !ready) {
       scrollToComponent(morphedRef.current, {
         offset: 100,
@@ -118,7 +117,7 @@ const useLevelUpScreen = ({ morphRef, morphedRef }) => {
         setReady(true);
       }, 2000);
     }
-  }, [morphed, morphedRef, ready]);
+  }, [morphed, morphedRef, ready]);*/
 
   return {
     selected,
@@ -130,7 +129,7 @@ const useLevelUpScreen = ({ morphRef, morphedRef }) => {
   };
 };
 
-const App = () => {
+const Character = () => {
   const morphRef = React.createRef();
   const morphedRef = React.createRef();
   const {
@@ -147,11 +146,8 @@ const App = () => {
   });
 
   return (
-    <div
-      className={cx(styles.root, {
-        [styles.rootTransition]: morphed,
-      })}
-    >
+    <div>
+      <div className={styles.root}></div>
       <div className={styles.square}></div>
       <a href="#" className={styles.button}>
         <h4>&lt;</h4>
