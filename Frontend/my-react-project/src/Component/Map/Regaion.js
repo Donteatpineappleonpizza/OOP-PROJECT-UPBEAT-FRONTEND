@@ -1,51 +1,53 @@
 import React, { useState, useEffect } from "react";
-import Icebox from '../../region@2x.png'
-import './regaion.css'
+import Icebox from "../../region@2x.png";
+import "./regaion.css";
+import CityCenter from "./CityCenter.png";
 
 function Grid({ matrix, W, H, onGridClick }) {
-    const imageName = { Icebox };
-  
-    const handleClick = (rowIndex, cellIndex) => {
-      if (onGridClick) {
-        onGridClick(rowIndex, cellIndex);
-      }
-    };  
-   
-    return (
-        <>
-          {matrix.map((row, rowIndex) => (
-            <span99
-              className={rowIndex % 2 === 0 ? "odd" : "even"}
-              style={{ width: W - W / 4 + 3 }}
-            >
-              <div key={rowIndex}>
-                {row.map((cell, cellIndex) => (
-                  <div key={cellIndex} style={{ height: "85px"}}>
-                    <img
-                      key={cellIndex}
-                      src={Icebox}
-                      alt=""
-                      width={W}
-                      height={H}
-                      onError={() => console.log(`Error loading ${imageName}`)}
-                      style={{ flex: 1 }}
-                      onClick={() => handleClick(rowIndex, cellIndex)}
-                      draggable="false"
-                    />
-                  </div>
-                ))}
-              </div>
-            </span99>
-          ))}
-        </>
-      );
+  const imageName = { Icebox };
+  const CityCenter = { CityCenter };
+
+  const handleClick = (rowIndex, cellIndex) => {
+    if (onGridClick) {
+      onGridClick(rowIndex, cellIndex);
     }
+  };
+
+  return (
+    <>
+      {matrix.map((row, rowIndex) => (
+        <span99
+          className={rowIndex % 2 === 0 ? "odd" : "even"}
+          style={{ width: W - W / 4 + 3 }}
+        >
+          <div key={rowIndex}>
+            {row.map((cell, cellIndex) => (
+              <div key={cellIndex} style={{ height: "85px" }}>
+                <img
+                  key={cellIndex}
+                  src={Icebox}
+                  alt=""
+                  width={W}
+                  height={H}
+                  onError={() => console.log(`Error loading ${imageName}`)}
+                  style={{ flex: 1 }}
+                  onClick={() => handleClick(rowIndex, cellIndex)}
+                  draggable="false"
+                />
+              </div>
+            ))}
+          </div>
+        </span99>
+      ))}
+    </>
+  );
+}
 
 export default function GridContainer() {
   const rows = 11;
   const columns = 9;
   const H = 80;
-  const W = ((246 / 212) * H);
+  const W = (246 / 212) * H;
 
   const matrix = new Array(rows);
   for (let i = 0; i < rows; i++) {
@@ -70,7 +72,7 @@ export default function GridContainer() {
       imageIndex++;
     }
   }
-  
+
   const [zoomLevel, setZoomLevel] = useState(1);
   const [isDragging, setIsDragging] = useState(false);
   const [lastMousePosition, setLastMousePosition] = useState({ x: 0, y: 0 });
@@ -99,11 +101,18 @@ export default function GridContainer() {
     };
   }, [zoomLevel]);
 
+  const [money, setMoney] = useState(0);
+  function genNumber(row, column) {
+    // 👇️ get number between min (inclusive) and max (inclusive)
+    return (row + column + 12) * 59;
+  }
 
   const [clickedCell, setClickedCell] = useState(null);
   const handleGridClick = (row, column) => {
     setClickedCell({ row, column });
+    setMoney(genNumber(row, column));
   };
+
   return (
     <>
       <div className="buttonszoom">
@@ -120,18 +129,16 @@ export default function GridContainer() {
       </div>
 
       <div style={{ overflow: "hidden" }} className="container4">
-        <div style={{ transform: transformStyle }} className="grid-container-wrapper">
-          <div  className="grid-container">
-            <Grid matrix={matrix} W={W} H={H} onGridClick={handleGridClick} />
-          </div>
+        <div style={{ transform: transformStyle }} className="grid-container">
+          <Grid matrix={matrix} W={W} H={H} onGridClick={handleGridClick} />
         </div>
       </div>
-
       {clickedCell && (
         <p className="text">
           R {clickedCell.row + 1} , C {clickedCell.column + 1}
         </p>
       )}
+      <div>{clickedCell && <p className="text2"> {money}</p>}</div>
     </>
   );
 }
