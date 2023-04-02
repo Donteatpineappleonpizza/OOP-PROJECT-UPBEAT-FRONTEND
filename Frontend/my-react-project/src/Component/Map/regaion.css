@@ -30,6 +30,13 @@
     border: 1px solid black;
   }
 
+  .grid-container-wrapper {
+    position: relative;
+    top: 3%;
+    left: 4%;
+    transform: translate(-50%, -50%);
+  }
+  
   .text{
     position: absolute;
     left: 4.5%;
@@ -41,6 +48,6 @@
   
   .buttonszoom {
     position: absolute;
-    bottom: 5%;
-    left: 40%;
+    bottom: 2%;
+    left: 39%;
   }

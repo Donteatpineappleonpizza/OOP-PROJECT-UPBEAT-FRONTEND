@@ -17,11 +17,10 @@ function Grid({ matrix, W, H, onGridClick }) {
             <span99
               className={rowIndex % 2 === 0 ? "odd" : "even"}
               style={{ width: W - W / 4 + 3 }}
-              key={rowIndex}
             >
-              <div>
+              <div key={rowIndex}>
                 {row.map((cell, cellIndex) => (
-                  <div key={cellIndex}>
+                  <div key={cellIndex} style={{ height: "85px"}}>
                     <img
                       key={cellIndex}
                       src={Icebox}
@@ -42,16 +41,16 @@ function Grid({ matrix, W, H, onGridClick }) {
       );
     }
 
-    export default function GridContainer() {
-        const rows = 11;
-        const columns = 9;
-        const H = 82;
-        const W = (246 / 212) * H;
-      
-        const matrix = new Array(rows);
-        for (let i = 0; i < rows; i++) {
-          matrix[i] = new Array(columns).fill(null);
-        }
+export default function GridContainer() {
+  const rows = 11;
+  const columns = 9;
+  const H = 80;
+  const W = ((246 / 212) * H);
+
+  const matrix = new Array(rows);
+  for (let i = 0; i < rows; i++) {
+    matrix[i] = new Array(columns).fill(null);
+  }
 
   // Define an array of image names
   const imageNames = Array.from({ length: rows * columns }, (_, i) => {
@@ -105,28 +104,33 @@ function Grid({ matrix, W, H, onGridClick }) {
   const handleGridClick = (row, column) => {
     setClickedCell({ row, column });
   };
-
   return (
     <>
-    <div  className="buttonszoom">
-
-      <button onClick={() => setZoomLevel(zoomLevel + 0.1)}>Zoom In</button>
-      <button onClick={() => setZoomLevel(zoomLevel - 0.1)}>Zoom Out</button>
-      <button onClick={() => {
-        setZoomLevel(1);
-        setContainerPosition({ x: 0, y: 0 });
-      }}>Reset</button>
-    </div>
-
-    <div style={{overflow: "hidden"}} className="container4">
-      <div style={{transform: transformStyle}} className="grid-container">
-      <Grid matrix={matrix} W={W} H={H} onGridClick={handleGridClick} />
+      <div className="buttonszoom">
+        <button onClick={() => setZoomLevel(zoomLevel + 0.1)}>Zoom In</button>
+        <button onClick={() => setZoomLevel(zoomLevel - 0.1)}>Zoom Out</button>
+        <button
+          onClick={() => {
+            setZoomLevel(1);
+            setContainerPosition({ x: 0, y: 0 });
+          }}
+        >
+          Reset
+        </button>
       </div>
-    </div >
-    {clickedCell && (
+
+      <div style={{ overflow: "hidden" }} className="container4">
+        <div style={{ transform: transformStyle }} className="grid-container-wrapper">
+          <div  className="grid-container">
+            <Grid matrix={matrix} W={W} H={H} onGridClick={handleGridClick} />
+          </div>
+        </div>
+      </div>
+
+      {clickedCell && (
         <p className="text">
-          R {clickedCell.row + 1} , C {clickedCell.column + 1} 
-          </p>
+          R {clickedCell.row + 1} , C {clickedCell.column + 1}
+        </p>
       )}
     </>
   );

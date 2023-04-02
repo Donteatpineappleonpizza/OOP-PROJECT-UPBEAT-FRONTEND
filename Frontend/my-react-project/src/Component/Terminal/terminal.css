@@ -80,11 +80,11 @@ body {
   color: #3df5b8;
 } */
 .result::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 .result::-webkit-scrollbar-thumb {
   background: #2cb386;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 .command-area {
