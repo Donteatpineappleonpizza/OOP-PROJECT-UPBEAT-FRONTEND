@@ -4,6 +4,9 @@ import cx from "classnames";
 import P1Img from "./p1wbg.png";
 import P2Img from "./p2wbg.png";
 import styles from "./styles.module.css";
+import { Link } from 'react-router-dom';
+import bg from '../../Background1.png'
+import logo from "../../logo1.png";
 
 export const Header = ({ children, ...rest }) => (
   // eslint-disable-next-line
@@ -106,18 +109,6 @@ const useLevelUpScreen = ({ morphRef, morphedRef }) => {
     }, 1500);
   };
 
-  /*React.useEffect(() => {
-    if (morphed && !ready) {
-      scrollToComponent(morphedRef.current, {
-        offset: 100,
-        align: "middle",
-        duration: 1000,
-      });
-      setTimeout(() => {
-        setReady(true);
-      }, 2000);
-    }
-  }, [morphed, morphedRef, ready]);*/
 
   return {
     selected,
@@ -149,15 +140,18 @@ const Character = () => {
     <div>
       <div className={styles.root}></div>
       <div className={styles.square}></div>
-      <a href="#" className={styles.button}>
+      <Link to="/how">
+      <div className={styles.button}>
         <h4>&lt;</h4>
-      </a>
+      </div>
+      </Link>
       <div style={{ margin: "100px auto" }}></div>
 
       <Content></Content>
       <Subheader></Subheader>
+      <img id="logo" src={logo} />
+      <div id="box2"></div>
       <div style={{ margin: "0px auto" }}>
-        <Header>Choose your character</Header>
 
         <Subheader></Subheader>
         <Content display="grid">
@@ -189,6 +183,7 @@ const Character = () => {
           [styles.hidden]: !selected,
         })}
       >
+        
         <button
           ref={morphRef}
           name="morph"

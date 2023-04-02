@@ -3,13 +3,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './firstpage.css';
 import logo from '../../logo1.png'
+import { Link } from 'react-router-dom';
+import bg from '../../Background1.png'
 
 function Firstpage() {
   return (
-    <div className="bg-image">
+    <div>
+      <img src={bg}/>
       <div className="content">
         <img src={logo} />
-        <a href="#" style={{ fontFamily: 'Varela Round, sans-serif' }} ><span>press to start</span></a>
+        <Link to="/how"><span style={{ fontFamily: 'Varela Round, sans-serif' }}>press to start</span></Link>
       </div>
       <div className="snowflakes" aria-hidden="true">
         <div className="snowflake">❅</div>

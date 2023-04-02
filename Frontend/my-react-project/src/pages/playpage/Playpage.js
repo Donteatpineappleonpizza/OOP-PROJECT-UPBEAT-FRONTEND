@@ -12,14 +12,23 @@ import Countdown from "../../Component/Countdown/Countdown";
 import Counter from "../../Component/Time/Counter";
 import Region from "../../Component/Map/Regaion";
 import myMp3File from "../playpage/fire.mp3";
+import { Howl, Howler } from 'howler';
 
 function PlayPage() {
-  useEffect(() => {
-    const audioEl = document.getElementsByClassName("audio-element")[0];
-    audioEl.addEventListener("canplaythrough", () => {
-      audioEl.play();
-    });
-  }, []);
+  Howler.volume(0.5); // set global volume to 50%
+
+// Create a new sound
+const sound = new Howl({
+  src: ['myMp3File'],
+  autoplay: true,
+  loop: true
+});
+  // useEffect(() => {
+  //   const audioEl = document.getElementsByClassName("audio-element")[0];
+  //   audioEl.addEventListener("canplaythrough", () => {
+  //     audioEl.play();
+  //   });
+  // }, []);
 
   const budget = 10000;
 

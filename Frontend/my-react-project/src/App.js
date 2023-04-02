@@ -13,6 +13,9 @@ function App() {
   return (
     <div>
       {/* <Character/> */}
+      <Firstpage/>
+      <Howpage/>
+      <Character/>
       <PlayPage/>
     </div>
   );

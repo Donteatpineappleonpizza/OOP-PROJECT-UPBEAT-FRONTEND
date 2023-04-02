@@ -4,6 +4,8 @@ import ReactDOM from "react-dom";
 import "./howpage.css";
 import logo from "../../logo1.png";
 import How from "./How.png";
+import { Link } from 'react-router-dom';
+import bg from '../../Background1.png'
 
 function Howpage() {
   return (
@@ -13,11 +15,13 @@ function Howpage() {
       <img id="logo" src={logo} />
       <img id="How" src={How} />
       <div id="box1"></div>
+      <Link to="/character">
       <button11>
-        <a href="#" className="custom-btn-11">
+          < div className = "custom-btn-11">
           <span2>NEXT</span2>
-        </a>
+          </div>
       </button11>
+      </Link>
     </div>
   );
 }
