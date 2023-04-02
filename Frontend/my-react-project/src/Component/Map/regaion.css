@@ -1,46 +1,54 @@
 .even {
-    top: 0;
-    position: relative;
-    display: inline-block;
-    width: fit-content;
-    margin-right: 0;
-  }
-  
-  .odd {
-    top: 42px;
-    display: inline-block;
-    width: fit-content;
-    margin-right: 0; 
-    position: relative;
-  }
+  top: 0;
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  margin-right: 0;
+}
 
+.odd {
+  top: 42px;
+  display: inline-block;
+  width: fit-content;
+  margin-right: 0;
+  position: relative;
+}
 
+.container4 {
+  position: absolute;
+  top: 7%;
+  left: 18%;
+  width: 90vh;
+  height: 85vh;
+  place-content: center;
+  place-items: center;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(203, 236, 255, 0.336);
+  border: 3px solid rgb(86, 138, 187);
+}
 
-  .container4 {
-    position: absolute;
-    top: 7%;
-    left: 18%;
-    width: 90vh;
-    height: 85vh;
-    place-content: center;
-    place-items: center;
-    border-radius: 30px;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-  }
+.text {
+  position: absolute;
+  left: 4.5%;
+  bottom: 36.8%;
+  font: 0.875em/1.7 "Varela Round", sans-serif;
+  font-size: 17px;
+  z-index: 120;
+}
 
-  .text{
-    position: absolute;
-    left: 4.5%;
-    bottom: 36.8%;
-    font: 0.875em/1.7 "Varela Round", sans-serif;
-    font-size: 17px;
-    z-index: 120;
-  }
-  
-  .buttonszoom {
-    position: absolute;
-    bottom: 5%;
-    left: 40%;
-  }
+.text2 {
+  position: absolute;
+  left: 4.5%;
+  bottom: 36.8%;
+  font: 0.875em/1.7 "Varela Round", sans-serif;
+  font-size: 17px;
+  z-index: 120;
+}
+
+.buttonszoom {
+  position: absolute;
+  bottom: 5%;
+  left: 40%;
+}
