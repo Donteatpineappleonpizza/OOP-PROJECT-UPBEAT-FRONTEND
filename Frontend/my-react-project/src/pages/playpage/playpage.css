@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Inconsolata:400, 700);
+@import url(https://fonts.googleapis.com/css?family=Inconsolata:400);
 
 html {
   height: 100%; /* Set height to 100% */
@@ -41,7 +41,7 @@ html {
 
 .budget {
   position: fixed;
-  top: 8%;
+  top:8.4%;
   right: 8.5%;
   width: 160px;
   height: 37px;

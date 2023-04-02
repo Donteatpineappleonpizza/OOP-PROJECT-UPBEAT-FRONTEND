@@ -166,7 +166,7 @@ input::placeholder {
   width: 130px;
   height: 40px;
   color: #fff;
-  padding: 10px 25px;
+  padding: 5px 25px;
   font: 0.875em/1.6 "Varela Round", sans-serif;
   font-size: 20px;
   font-weight: 500;
@@ -181,7 +181,7 @@ input::placeholder {
     width: 130px;
     height: 40px;
     color: #fff;
-    padding: 10px 25px;
+    padding: 5px 25px;
     font: 0.875em/1.6 "Varela Round", sans-serif;
     font-size: 20px;
     font-weight: 500;

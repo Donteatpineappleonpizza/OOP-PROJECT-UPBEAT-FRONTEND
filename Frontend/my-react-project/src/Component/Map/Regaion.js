@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Icebox from "../../region@2x.png";
 import "./regaion.css";
+import CC from "./CityCenter.png" ;
+import Crew from "./citycrew.png" ;
 
 function Grid({ matrix, W, H, onGridClick }) {
   const imageName = { Icebox };
+  const CityCenter = {CC} ;
+  const CityCrew = {Crew} ;
 
   const handleClick = (rowIndex, cellIndex) => {
     if (onGridClick) {
@@ -24,8 +28,12 @@ function Grid({ matrix, W, H, onGridClick }) {
               <div key={cellIndex} style={{ height: "85px"}}>
                 <img
                   key={cellIndex}
-                  src={Icebox}
-                  alt=""
+                  
+                  src={rowIndex === 2 && cellIndex === 3
+                      ? Crew
+                      : cell === "city center.png"
+                      ? CC
+                      : Icebox}                  alt=""
                   width={W}
                   height={H}
                   onError={() => console.log(`Error loading ${imageName}`)}
@@ -59,6 +67,7 @@ export default function GridContainer() {
     return "region.png";
   });
 
+
   // Shuffle the array to get a random order
   const shuffledImageNames = shuffleArray(imageNames);
 
@@ -71,6 +80,8 @@ export default function GridContainer() {
       imageIndex++;
     }
   }
+  matrix[4][4] = "city center.png";
+  
 
   const [zoomLevel, setZoomLevel] = useState(1);
   const [isDragging, setIsDragging] = useState(false);
@@ -134,10 +145,10 @@ export default function GridContainer() {
           </div>
         </div>
       </div>
-      
+
       {clickedCell && (
         <p className="text">
-          R {clickedCell.row + 1} , C {clickedCell.column + 1}
+          R {clickedCell.row } , C {clickedCell.column }
         </p>
       )}
       <div>{clickedCell && <p className="text2"> {money}</p>}</div>
