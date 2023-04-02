@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Inconsolata:400,700);
+@import url(https://fonts.googleapis.com/css?family=Inconsolata:400, 700);
 
 html {
   height: 100%; /* Set height to 100% */
@@ -37,6 +37,19 @@ html {
   border: 2px solid #623e1c;
   border-radius: 40px;
   z-index: 5;
+}
+
+.budget {
+  position: fixed;
+  top: 9%;
+  right: 8.5%;
+  width: 160px;
+  height: 37px;
+  font: 0.875em/1.7 "Varela Round", sans-serif;
+  color: #623e1c;
+  font-size: 20px;
+  font-weight: 800;
+  z-index: 120;
 }
 
 .box2 {
@@ -135,18 +148,18 @@ html {
 
 /* botton */
 .right-button-container {
-    display: flex;
-    justify-content: flex-end;
-    height: 100px; /* Set the height of the container */
-    position: absolute;
-    top: -6.6%;
-    right: 11.55%;
-  }
-  
-  .right-button {
-    margin-left: 0px;
-    margin-top: 10%;
-  }
+  display: flex;
+  justify-content: flex-end;
+  height: 100px; /* Set the height of the container */
+  position: absolute;
+  top: -6.6%;
+  right: 11.55%;
+}
+
+.right-button {
+  margin-left: 0px;
+  margin-top: 10%;
+}
 
 .custom-btn {
   width: 130px;
@@ -182,7 +195,7 @@ html {
   background: linear-gradient(
     0deg,
     rgb(240, 108, 222) 0%,
-    rgb(254, 55, 198)  100%
+    rgb(254, 55, 198) 100%
   );
   width: 130px;
   height: 40px;

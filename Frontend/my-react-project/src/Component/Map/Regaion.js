@@ -100,9 +100,16 @@ export default function GridContainer() {
     };
   }, [zoomLevel]);
 
+  const [money, setMoney] = useState(0);
+  function genNumber(row, column) {
+    // 👇️ get number between min (inclusive) and max (inclusive)
+    return (row + column + 12) * 59;
+  }
+
   const [clickedCell, setClickedCell] = useState(null);
   const handleGridClick = (row, column) => {
     setClickedCell({ row, column });
+    setMoney(genNumber(row, column));
   };
 
   return (
@@ -130,9 +137,7 @@ export default function GridContainer() {
           R {clickedCell.row + 1} , C {clickedCell.column + 1}
         </p>
       )}
-      <div>
-        <p className="text2">AAA</p>
-      </div>
+      <div>{clickedCell && <p className="text2"> {money}</p>}</div>
     </>
   );
 }
