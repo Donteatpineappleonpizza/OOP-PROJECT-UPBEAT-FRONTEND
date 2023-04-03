@@ -4,10 +4,14 @@ import "./regaion.css";
 import CC from "./CityCenter.png" ;
 import Crew from "./citycrew.png" ;
 
+// Define the row and column indices for the CityCrew image
+const cityCrewRow = 5;
+const cityCrewCol = 4;
+
 function Grid({ matrix, W, H, onGridClick }) {
   const imageName = { Icebox };
-  const CityCenter = {CC} ;
-  const CityCrew = {Crew} ;
+  const CityCenter = { CC };
+  const CityCrew = { Crew };
 
   const handleClick = (rowIndex, cellIndex) => {
     if (onGridClick) {
@@ -21,28 +25,59 @@ function Grid({ matrix, W, H, onGridClick }) {
         <span99
           className={rowIndex % 2 === 0 ? "odd" : "even"}
           style={{ width: W - W / 4 + 3 }}
-          
         >
           <div key={rowIndex}>
-            {row.map((cell, cellIndex) => (
-              <div key={cellIndex} style={{ height: "85px"}}>
-                <img
-                  key={cellIndex}
-                  
-                  src={rowIndex === 2 && cellIndex === 3
-                      ? Crew
-                      : cell === "city center.png"
-                      ? CC
-                      : Icebox}                  alt=""
-                  width={W}
-                  height={H}
-                  onError={() => console.log(`Error loading ${imageName}`)}
-                  style={{ flex: 1 }}
-                  onClick={() => handleClick(rowIndex, cellIndex)}
-                  draggable="false"
-                />
-              </div>
-            ))}
+            {row.map((cell, cellIndex) => {
+              if (rowIndex === cityCrewRow && cellIndex === cityCrewCol) {
+                return (
+                  <div
+                    key={cellIndex}
+                    style={{
+                      position: "relative",
+                      height: "85px",
+                      width: W,
+                    }}
+                  >
+                    <img
+                      src={Icebox}
+                      alt=""
+                      style={{
+                        position: "absolute",
+                        width: "100%",
+                        height: "100%",
+                      }}
+                    />
+
+                    <img
+                      src={Crew}
+                      alt=""
+                      style={{
+                        position: "absolute",
+                        top: 21,
+                        left: 22.5,
+                        width: "50%",
+                        height: "50%",
+                      }}
+                    />
+                  </div>
+                );
+              } else {
+                return (
+                  <div key={cellIndex} style={{ height: "85px" }}>
+                    <img
+                      src={cell === "city center.png" ? CC : Icebox}
+                      alt=""
+                      width={W}
+                      height={H}
+                      onError={() => console.log('Error loading ${imageName}')}
+                      style={{ flex: 1 }}
+                      onClick={() => handleClick(rowIndex, cellIndex)}
+                      draggable="false"
+                    />
+                  </div>
+                );
+              }
+            })}
           </div>
         </span99>
       ))}
@@ -66,7 +101,6 @@ export default function GridContainer() {
     const imageNumber = (i % 17) + 1;
     return "region.png";
   });
-
 
   // Shuffle the array to get a random order
   const shuffledImageNames = shuffleArray(imageNames);
@@ -138,7 +172,7 @@ export default function GridContainer() {
         </button>
       </div>
 
-      <div style={{ overflow: "hidden" }} className="container4">
+      <div style={{ overflow: "hidden" }} className="container4" draggable={true} >
         <div style={{ transform: transformStyle }} className="grid-container-wrapper">
           <div  className="grid-container">
             <Grid matrix={matrix} W={W} H={H} onGridClick={handleGridClick} />

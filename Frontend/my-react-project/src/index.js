@@ -10,6 +10,7 @@ import {
 import Firstpage from './pages/firstpage/Firstpage';
 import Howpage from './pages/howpage/Howpage';
 import Character from './pages/select1/Character';
+import Character2 from './pages/select2/Character2';
 import PlayPage from './pages/playpage/Playpage';
 
 const router = createBrowserRouter([
@@ -22,6 +23,9 @@ const router = createBrowserRouter([
   },{
     path: "/character",
     element: <Character/>,
+  },{
+    path: "/character2",
+    element: <Character2/>,
   },{
     path: "/play",
     element: <PlayPage/>,

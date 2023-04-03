@@ -76,7 +76,7 @@ button11 {
   margin: 20px;
   position: absolute;
   bottom: 11%;
-  right: 52%;
+  right: 54%;
 }
 .custom-btn-11 {
   width: 160px;
@@ -133,8 +133,10 @@ button11 {
   left: 0;
   width: 130px;
   height: 100%;
-  -webkit-animation: shiny-btn1 3s ease-in-out infinite;
   animation-name: shiny-btn1;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
 }
 
 .btn-11:hover{

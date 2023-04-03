@@ -3,7 +3,7 @@ import '../Countdown/countdown.css'
 
 function Countdown() {
   const [timeLeft, setTimeLeft] = useState({
-    minutes: "05",
+    minutes: "30",
     seconds: "00",
   });
 

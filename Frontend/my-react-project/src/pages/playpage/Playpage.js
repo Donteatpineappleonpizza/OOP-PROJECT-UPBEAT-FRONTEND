@@ -23,6 +23,8 @@ const sound = new Howl({
   autoplay: true,
   loop: true
 });
+
+
   // useEffect(() => {
   //   const audioEl = document.getElementsByClassName("audio-element")[0];
   //   audioEl.addEventListener("canplaythrough", () => {
@@ -35,7 +37,7 @@ const sound = new Howl({
   return (
     <div>
       <div>
-        <audio className="audio-element" autoPlay loop src={myMp3File} />
+        <audio className="audio-element" autoPlay loop src={myMp3File} type="audio/mpeg"/>
       </div>
       <div className="Terminal">
         <Terminal />

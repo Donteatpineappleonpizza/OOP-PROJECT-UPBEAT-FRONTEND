@@ -19,7 +19,6 @@ const sound = new Howl({
   loop: true
 });
 
-
 export const Header = ({ children, ...rest }) => (
   // eslint-disable-next-line
   <h1 className={styles.header} {...rest}>
@@ -100,7 +99,7 @@ const mappedCharSelections = characterSelections.reduce(
 
 const useLevelUpScreen = ({ morphRef, morphedRef }) => {
   const [selected, setSelected] = React.useState(null);
-  //const [morphing, setMorphing] = React.useState(false);
+  const [morphing, setMorphing] = React.useState(false);
   const [morphed, setMorphed] = React.useState(false);
   const [ready, setReady] = React.useState(false);
 
@@ -113,32 +112,32 @@ const useLevelUpScreen = ({ morphRef, morphedRef }) => {
     });*/
   };
 
-  /*const onMorph = () => {
+  const onMorph = () => {
     setMorphing(true);
     setTimeout(() => {
       setMorphing(false);
       setMorphed(true);
     }, 1500);
   };
-*/
+
 
   return {
     selected,
     onSelect,
     morphed,
-    //morphing,
-    //onMorph,
+    morphing,
+    onMorph,
     ready,
   };
 };
 
-const Character = () => {
+const Character2 = () => {
   const morphRef = React.createRef();
   const morphedRef = React.createRef();
   const {
     selected,
     onSelect,
-    
+    morphing,
     morphed,
     onMorph,
     ready,
@@ -155,7 +154,7 @@ const Character = () => {
       </div>
       <div className={styles.root}></div>
       <div className={styles.square}></div>
-      <Link to="/how">
+      <Link to="/character">
       <div className={styles.button}>
         <h4>&lt;</h4>
       </div>
@@ -177,19 +176,17 @@ const Character = () => {
               isSelected={selected === props.type}
               {...props}
             />
-            
           ))}
-          
         </Content>
       </div>
       <div
         className={cx({
-          [styles.morphed]: morphed
-          
+          [styles.morphed]: morphed,
+          //[styles.hidden]: !morphed,
         })}
       >
         <Header2>
-          Player1 select <em>{selected}</em>
+          Player2 select <em>{selected}</em>
         </Header2>
         <Content></Content>
         <Subheader></Subheader>
@@ -200,7 +197,7 @@ const Character = () => {
           [styles.hidden]: !selected,
         })}
       >
-        <a href="/character2" >
+      <a href="/play" >
         <button
           ref={morphRef}
           name="morph"
@@ -210,7 +207,7 @@ const Character = () => {
           onClick={onMorph}
           disabled={morphed}
         >
-          { morphed ? "Ready": "Next"  }
+          { morphed ? "Ready": "Start"  }
         </button>
         </a>
       </div>
@@ -224,4 +221,4 @@ const Character = () => {
   );
 };
 
-export default Character;
+export default Character2;
