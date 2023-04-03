@@ -172,7 +172,7 @@ export default function GridContainer() {
         </button>
       </div>
 
-      <div style={{ overflow: "hidden" }} className="container4" >
+      <div style={{ overflow: "hidden" }} className="container4" draggable={true} >
         <div style={{ transform: transformStyle }} className="grid-container-wrapper">
           <div  className="grid-container">
             <Grid matrix={matrix} W={W} H={H} onGridClick={handleGridClick} />
